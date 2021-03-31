@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ailiaili</title>
+    <link rel="shortcut icon" href="./icon/litchi.svg">
+    <link rel="stylesheet" href="./video.css">
+</head>
+
+<body>
+    <div id="max">
+        <div id="box" class="box"></div>
+        <video id="video" src="./video/02.MP4">
+
+        </video>
+        <div id="menu">
+            <div class="bar">
+                <div class="jp-seek-bar scroll" style="width: 100%;" id="scroll">
+                    <div class="jp-play-bar mask" id="mask" style="width: 0%;">
+                        <span class="pross"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="menu">
+                <!-- 暂停、开始 -->
+                <div class="play_menu_all">
+                    <img src="./icon/开始.png" alt="" class="play_menu">
+                    <img src="./icon/暂停 停止.png" class="pause_menu">
+                </div>
+                <!-- 下一个视频 -->
+                <div class="next_move">
+                    <img src="./icon/下一个视频.png" alt="" class="next_move_">
+                </div>
+                <!-- 当前时间、总时间 -->
+                <div class="time">
+                    <span class="now_time">00:00</span>/
+                    <span class="all_time">00:00</span>
+                </div>
+
+                <!-- 弹幕功能 -->
+                <div class="danmu">
+                    <input type="text" id="txt" autocomplete="off" />
+                    <button onclick="send()">弹</button>
+                </div>
+
+                <!-- 倍速 -->
+                <div class="double">
+                    <button class="one_double">1.0X</button>
+                    <button class="two_double">2.0X</button>
+                </div>
+                <!-- 音量 -->
+                <div class="yinliang">
+                    <img src="./icon/yinliang.png" alt="" class="yinliang_menu">
+                    <img src="./icon/静音 (1).png" alt="" class="jingyin">
+                    <div class="jiajian">
+                        <div class="all-bar scroll" style="width: 100%;">
+                            <div class="jj-bar " style="height: 50%;">
+                                <span class="jj_span"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 全屏 -->
+                <div class="full">
+                    <img src="./icon/全屏 (1).png" alt="" class="full_menu">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="./jquery-3.5.1.min.js"></script>
+
+<script src="./danmu.js"></script>
+<script>
+    //把所有视频路径封装成数组
+    let arr = ['./video/02.MP4', './video/01.MP4', './video/03.MP4', "./video/video.webm"]
+
+    let all_ = document.getElementById("max");
+    let menu_ = document.getElementById("menu");
+    //获取暂停开始按钮
+    let play_ = document.querySelector(".play_menu");
+    let pause_ = document.querySelector(".pause_menu");
+
+    //获取视频video
+    let video_ = document.getElementById("video");
+
+    //获取开始时间、总时间
+    let now_time = document.querySelector(".now_time");
+    let all_time = document.querySelector(".all_time");
+    console.log(all_time);
+
+    //获取下一个视频
+    let next_ = document.querySelector(".next_move_");
+    console.log(next_);
+
+    //获取全屏按钮
+    let full_menu = document.querySelector('.full_menu')
+
+
+    //菜单隐藏显示
+    all_.addEventListener("mouseover", function () {
+        menu_.style.display = "block";
+    })
+    all_.addEventListener("mouseleave", function () {
+        menu_.style.display = "none";
+    });
+
+    //获取速度按钮
+    let two_double = document.querySelector(".two_double");
+    let one_double = document.querySelector(".one_double");
+
+    //获取音量按钮、音量条
+    let yin_open = document.querySelector(".yinliang_menu");
+    let yin_close = document.querySelector(".jingyin");
+
+
+    let yinliang = document.querySelector(".yinliang");
+    let ylt = document.querySelector('.jiajian');
+
+    //进度条
+    let jpplaybar = document.querySelector(".jp-play-bar");
+    console.log(jpplaybar);
+    //点击进度条
+    let jpseekbar = document.querySelector(".jp-seek-bar");
+    console.log(jpseekbar);
+
+    let pross = document.querySelector('.pross');
+    console.log(pross);
+    var barleft = 0;
+
+    //音量
+    let all_jjbar = document.querySelector('.all-bar');
+    let jj_bar = document.querySelector(".jj-bar");
+    let jj_span = document.querySelector('.jj-span');
+    let all_h = all_jjbar.offsetHeight
+    console.log(all_h);
+
+    //播放暂停
+    video_.addEventListener("canplay",function(){
+        play_.addEventListener('click',function(){
+            video_.play();
+            this.style.display = 'none';
+
+        })
+    })
+
+
+
+
+
+</script>
+
+</html>
